@@ -1,0 +1,49 @@
+<div class="container">
+
+    <form action="" method="POST" role="form" name="newEventForm">
+        <legend>New Event</legend>
+
+        <div class="form-group">
+            <label for="eventName">Name:</label>
+            <input type="text" class="form-control" id="eventName" placeholder="Name of event..." ng-model="event.name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="eventDate">Date:</label>
+            <input type="text" class="form-control" id="eventDate" placeholder="Date of event (dd/MM/yyyy)..." ng-model="event.date"
+                required ng-pattern="/\d\d/\d\d/\d\d\d\d/">
+        </div>
+
+        <div class="form-group">
+            <label for="eventTime">Time:</label>
+            <input type="text" class="form-control" id="eventTime" placeholder="Time of event..." ng-model="event.time">
+        </div>
+
+        <div class="form-group ">
+            <label for="eventLocation">Location:</label>
+            <div class="row">
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="eventAddress" placeholder="Address of event..." ng-model="event.location.address">
+                </div>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="eventCity" placeholder="City of event..." ng-model="event.location.city">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="eventImageUrl">Image:</label>
+            <input type="text" class="form-control" id="eventImageUrl" placeholder="Image url..." ng-model="event.imageUrl">
+        </div>
+
+        <img ng-src="{{event.imageUrl}}" alt="{{ event.name }}">
+
+        <div class="clearfix"></div>
+
+        <button type="submit" class="btn btn-primary" ng-click="saveEvent(event, newEventForm)" ng-disabled="newEventForm.$invalid">Submit</button>
+
+        <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+
+    </form>
+
+</div>

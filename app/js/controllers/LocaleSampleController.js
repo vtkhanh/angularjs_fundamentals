@@ -5,6 +5,8 @@
     
     function LocaleSampleController($scope, $locale) {
         $scope.myDate = Date.now();
-        $scope.myFormat = $locale.DATETIME_FORMATS.fulldate;    
+        $scope.myFormat = $locale.DATETIME_FORMATS.fulldate;
+        
+        throw {message: 'oolaa', cause: 'aaloo'};    
     }
 }());

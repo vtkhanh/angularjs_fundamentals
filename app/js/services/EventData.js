@@ -11,6 +11,9 @@
             getEvent: function (id) {
                 return eventResource.get({ id: id });
             },
+            getAllEvents: function () {
+                return eventResource.query();
+            },
             save: function (event) {
                 event.id = 999;
                 return eventResource.save(event);
