@@ -12,6 +12,8 @@
                 return eventResource.get({ id: id });
             },
             getAllEvents: function () {
+                console.log('get all events');
+                
                 return eventResource.query();
             },
             save: function (event) {

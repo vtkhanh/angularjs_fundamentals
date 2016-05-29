@@ -1,0 +1,19 @@
+<a href="event/{{event.id}}">
+    <div class="well">
+        <div class="row">
+            <h2 class="col-sm-12">{{event.name}}</h2>
+        </div>
+        <div class="row">
+            <strong class="col-sm-3">Date:</strong><span>{{event.date}}</span>
+        </div>
+        <div class="row">
+            <strong class="col-sm-3">Time:</strong><span>{{event.time}}</span>
+        </div>
+        <div class="row">
+            <strong class="col-sm-3">Location:</strong><span>{{event.location.address}}</span>
+        </div>
+        <div class="row">
+            <strong class="col-sm-3">&nbsp;</strong><span>{{event.location.city}}, {{event.location.province}}</span>
+        </div>
+    </div>
+</a>

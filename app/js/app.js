@@ -1,15 +1,6 @@
-'use strict';
+var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute']);
 
-let eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute']);
-
-eventsApp.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    $httpProvider.defaults.withCredentials = true;
-    delete $httpProvider.defaults.headers.common["X-Requested-With"];
-    $httpProvider.defaults.headers.common["Accept"] = "application/json";
-    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-    // $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "http://angularjs:5000";
-    
+eventsApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {        
     $routeProvider
         .when('/newEvent', {
             templateUrl: 'templates/NewEvent.html',
@@ -17,8 +8,23 @@ eventsApp.config(['$routeProvider', '$httpProvider', function ($routeProvider, $
         })
         .when('/events', {
             templateUrl: 'templates/EventList.html',
-            controller: 'EventListController'
+            controller: 'EventListController',
+            resolve: {
+                events: ['$route', 'eventData', function ($route, eventData) {
+                    return eventData.getAllEvents();
+                }]
+            }
+        })
+        .when('/event/:id', {
+            templateUrl: 'templates/EventDetails.html',
+            controller: 'EventController'
+        })
+        .when('/sampleDirective', {
+            templateUrl: 'templates/SampleDirective.html',
+            controller: 'SampleDirectiveController'
         })
         .otherwise({ redirectTo: '/events' });
+        
+    $locationProvider.html5Mode(true);
 }]);
 

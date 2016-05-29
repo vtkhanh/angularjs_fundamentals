@@ -1,6 +1,6 @@
 /* app css stylesheet */
 .hoverwell:hover {
-  background-color: #52575c;
+  background-color: #d1f6d6;
   cursor: pointer;
 }
 select, textarea {
@@ -90,6 +90,17 @@ select, textarea {
     align-items: center;
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
   display: none !important;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
 }
