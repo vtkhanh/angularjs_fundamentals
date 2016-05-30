@@ -3,9 +3,10 @@
         .module('eventsApp')
         .controller('EventListController', EventListController);
         
-    EventListController.$inject = ['$scope', '$location', 'eventData', '$route'];
+    EventListController.$inject = ['$scope', '$route', 'events'];
     
-    function EventListController($scope, $location, eventData, $route) {        
-        $scope.events = $route.current.locals.events;        
+    function EventListController($scope, $route, events) {
+        // $scope.events = $route.current.locals.events;  load from $route variable                        
+        $scope.events = events;
     }
 })();
