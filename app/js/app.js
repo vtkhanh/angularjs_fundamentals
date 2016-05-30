@@ -1,6 +1,10 @@
 var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute']);
 
-eventsApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {        
+eventsApp.config(config);
+
+config.$inject = ['$routeProvider', '$locationProvider'];
+
+function config($routeProvider, $locationProvider) {
     $routeProvider
         .when('/newEvent', {
             templateUrl: 'templates/NewEvent.html',
@@ -10,9 +14,7 @@ eventsApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
             templateUrl: 'templates/EventList.html',
             controller: 'EventListController',
             resolve: {
-                events: ['$route', 'eventData', function ($route, eventData) {
-                    return eventData.getAllEvents();
-                }]
+                events: getEvents
             }
         })
         .when('/event/:id', {
@@ -24,7 +26,12 @@ eventsApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
             controller: 'SampleDirectiveController'
         })
         .otherwise({ redirectTo: '/events' });
-        
-    $locationProvider.html5Mode(true);
-}]);
 
+    $locationProvider.html5Mode(true);
+}
+
+getEvents.$inject = ['$route', 'eventData'];
+
+function getEvents($route, eventData) {
+    return eventData.getAllEvents();
+}

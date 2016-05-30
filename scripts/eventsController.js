@@ -7,14 +7,12 @@ module.exports.get = function(req, res, next) {
     
     let event = fs.readFileSync('app/data/event/' + req.params.id + '.json', 'utf8');    
     res.send(event);
-    next();
 };
 
 module.exports.save = function(req, res, next) {
     let event = req.body;
     fs.writeFileSync('app/data/event/' + req.params.id + '.json', JSON.stringify(event));
     res.send(event);
-    next();
 }
 
 module.exports.getAll = function(req, res, next) {
@@ -40,6 +38,4 @@ module.exports.getAll = function(req, res, next) {
     results += "]";
            
     res.send(results);
-    
-    next();
 };

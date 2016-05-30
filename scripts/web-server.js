@@ -13,9 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(rootPath + '/app'));
 
-let corsOptions = {  
-  allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept"
-};
+// let corsOptions = {  
+//   allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept"
+// };
 
 // app.use(cors(corsOptions));
 
